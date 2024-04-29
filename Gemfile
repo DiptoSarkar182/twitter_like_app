@@ -70,3 +70,5 @@ end
 gem "devise", "~> 4.9"
 gem 'cloudinary'
 gem 'paperclip-cloudinary'
+
+gem "streamio-ffmpeg", "~> 3.0"
