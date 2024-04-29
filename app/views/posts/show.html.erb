@@ -1,0 +1,23 @@
+<div>
+  <%= @post.user.full_name %>
+</div>
+
+<div>
+  <span title="<%= @post.created_at.strftime('%B %d, %Y %I:%M %p') %>" ><%= time_ago_in_words(@post.created_at) %> ago</span>
+</div>
+
+<div>
+  <%= @post.body %>
+</div>
+
+<div>
+  <% if @post.post_media.attached? %>
+    <div>
+      <% if @post.post_media.content_type.start_with? 'image' %>
+        <%= image_tag @post.post_media %>
+      <% elsif @post.post_media.content_type.start_with? 'video' %>
+        <%= video_tag @post.post_media, controls: true %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

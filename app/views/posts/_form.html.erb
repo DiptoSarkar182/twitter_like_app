@@ -1,0 +1,26 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div role="alert">
+      <h2 ><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.text_area :body, placeholder: "What is happening #{current_user.full_name}?!" %>
+  </div>
+
+  <div>
+    <%= form.label :post_media, "Attach photo or video (Max Size 10MB):" %>
+    <%= form.file_field :post_media, accept: 'image/jpeg,image/png,video/mp4' %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

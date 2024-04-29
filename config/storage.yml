@@ -1,3 +1,9 @@
+<% if Rails.env.production? %>
+  <% folder = "ruby_on_rails/twitter_like_app" %>
+<% else %>
+  <% folder = "" %>
+<% end %>
+
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
@@ -32,3 +38,13 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+
+cloudinary:
+  service: Cloudinary
+  cloud_name: <%= ENV['CLOUDINARY_NAME'] %>
+  api_key: <%= ENV['CLOUDINARY_API_KEY'] %>
+  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
+  secure: true
+  cdn_subdomain: true
+  folder: <%= folder %>

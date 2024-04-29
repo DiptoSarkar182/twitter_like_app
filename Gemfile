@@ -1,3 +1,4 @@
+gem 'dotenv', groups: [:development, :test]
 source "https://rubygems.org"
 
 ruby "3.2.3"
@@ -67,3 +68,5 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+gem 'cloudinary'
+gem 'paperclip-cloudinary'
