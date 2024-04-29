@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authorize_user, only: [:edit, :update, :destroy]
   # /
   def index
     @posts = Post.all.order('created_at DESC')
@@ -43,9 +44,24 @@ class PostsController < ApplicationController
     end
   end
 
+  # /posts/:id
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to root_path, notice: "Post deleted successfully!"
+  end
+
   private
   def post_params
     params.require(:post).permit(:body, :post_media)
+  end
+
+
+  def authorize_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to root_path, alert: "You are not authorized to perform this action."
+    end
   end
 
 end
