@@ -28,7 +28,8 @@ class Post < ApplicationRecord
   def purge_post_media
     if Rails.env.production?
       public_id = "ruby_on_rails/twitter_like_app/#{post_media.key}"
-      Cloudinary::Api.delete_resources([public_id], type: :upload, resource_type: :auto)
+      resource_type = post_media.content_type.start_with?('image') ? 'image' : 'video'
+      Cloudinary::Api.delete_resources([public_id], type: :upload, resource_type: resource_type)
     end
   end
 
