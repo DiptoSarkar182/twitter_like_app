@@ -1,0 +1,10 @@
+<div>
+  <div>
+    <h1><%= @user.full_name %>'s Profile</h1>
+  </div>
+  <div>
+    <% @user_posts.each do |post| %>
+      <%= render 'users_post', post: post %>
+    <% end %>
+  </div>
+</div>

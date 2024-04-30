@@ -1,5 +1,5 @@
 <div>
-  <%= @post.user.full_name %>
+  <%= link_to @post.user.full_name, users_profile_path(@post.user) %>
 </div>
 
 <div>

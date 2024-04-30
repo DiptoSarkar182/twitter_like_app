@@ -1,0 +1,47 @@
+<div>
+  <div>
+    <%= post.user.full_name %>
+  </div>
+  <div>
+    <%= link_to "#{@following_count} Following", show_following_follow_path(post.user) %>
+  </div>
+  <div>
+    <%= link_to "#{@followers_count} Followers", show_followers_follow_path(post.user) %>
+  </div>
+  <% unless post.user == current_user %>
+    <% if current_user.following.include?(post.user) %>
+      <%= button_to "Unfollow", unfollow_user_follow_path(post.user), method: :post %>
+    <% else %>
+      <%= button_to "Follow", follow_user_follow_path(post.user), method: :post %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <span title="<%= post.created_at.strftime('%B %d, %Y %I:%M %p') %>"> <%= time_ago_in_words(post.created_at) %> ago</span>
+</div>
+
+<div>
+  <%= link_to post.body, post_path(post)%>
+</div>
+
+<div>
+  <% if post.post_media.attached? %>
+    <div>
+      <% if post.post_media.content_type.start_with? 'image' %>
+        <%= image_tag post.post_media %>
+      <% elsif post.post_media.content_type.start_with? 'video' %>
+        <%= video_tag post.post_media, controls: true %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <% if post.user == current_user %>
+    <div>
+      <%= link_to "Edit", edit_post_path(post) %>
+      <%= link_to "Delete", post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </div>
+  <% end %>
+</div>

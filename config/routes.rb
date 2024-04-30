@@ -10,4 +10,13 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts
+  resources :users_profile, only: [:show]
+  resources :follows do
+    member do
+      post :follow_user
+      post :unfollow_user
+      get :show_followers
+      get :show_following
+    end
+  end
 end

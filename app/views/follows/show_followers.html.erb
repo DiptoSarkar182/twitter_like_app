@@ -1,0 +1,11 @@
+<div>
+  <% if @followers.empty? %>
+    <div>
+      User has no followers.
+    </div>
+  <% else %>
+    <% @followers.each do |follower| %>
+      <%= link_to follower.full_name, users_profile_path(follower) %>
+    <% end %>
+  <% end %>
+</div>

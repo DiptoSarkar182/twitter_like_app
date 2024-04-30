@@ -1,13 +1,17 @@
 <div>
-  <%= post.user.full_name %>
+  <%= link_to post.user.full_name, users_profile_path(post.user) %>
 </div>
-
 <div>
-  <span title="<%= post.created_at.strftime('%B %d, %Y %I:%M %p') %>" ><%= time_ago_in_words(post.created_at) %> ago</span>
-</div>
+  <%= link_to post_path(post) do %>
 
-<div>
-  <%= link_to post.body, post_path(post) %>
+    <div>
+      <span title="<%= post.created_at.strftime('%B %d, %Y %I:%M %p') %>"><%= time_ago_in_words(post.created_at) %> ago</span>
+    </div>
+
+    <div>
+      <%= post.body %>
+    </div>
+  <% end %>
 </div>
 
 <div>
