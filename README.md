@@ -1,10 +1,9 @@
-# Book Face
+# Twitter Like App
 
 ## Introduction
 
 This is a simple Rails application developed as a coding assessment for ROR Intern position at 
-[PlanetSpark](https://www.planetspark.in/). This applications is about Twitter-like 
-(text-post) app built with Rails.
+[PlanetSpark](https://www.planetspark.in/). This is a basic twitter clone app.
 ## Live Demo
 
 You can see a live version of the app [here](https://twitter-like-app.onrender.com).
@@ -17,6 +16,11 @@ Please note that the app is hosted on a free tier and may take a moment to load 
 - View a list of all your tweets.
 - Follow and unfollow other users.
 - Post single images or videos in your tweets.
+
+## Screenshots
+
+![SS1](./app/assets/images/ss1.PNG)
+![SS2](./app/assets/images/ss2.PNG)
 
 ## Getting Started
 
