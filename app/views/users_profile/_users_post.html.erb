@@ -1,15 +1,6 @@
 <div class="mb-6 border-b border-gray-200 pb-6">
   <div class="mb-2 flex items-center">
     <span class="text-gray-800 font-semibold mr-2"><%= post.user.full_name %></span>
-    <% unless post.user == current_user %>
-      <span class="ml-4">
-        <% if current_user.following.include?(post.user) %>
-          <%= button_to "Unfollow", unfollow_user_follow_path(post.user), method: :post, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
-        <% else %>
-          <%= button_to "Follow", follow_user_follow_path(post.user), method: :post, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-        <% end %>
-      </span>
-    <% end %>
   </div>
 
   <div class="text-gray-600 text-sm mb-2">
