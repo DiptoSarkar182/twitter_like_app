@@ -1,11 +1,13 @@
-<div>
+<div class="bg-white rounded-lg shadow-md p-6">
   <% if @followers.empty? %>
-    <div>
+    <div class="text-gray-600">
       User has no followers.
     </div>
   <% else %>
-    <% @followers.each do |follower| %>
-      <%= link_to follower.full_name, users_profile_path(follower) %>
-    <% end %>
+    <div class="grid grid-cols-3 gap-4">
+      <% @followers.each do |follower| %>
+        <%= link_to follower.full_name, users_profile_path(follower), class: "text-blue-500 hover:text-blue-700 font-semibold" %>
+      <% end %>
+    </div>
   <% end %>
 </div>

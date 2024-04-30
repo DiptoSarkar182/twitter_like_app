@@ -1,10 +1,11 @@
-<div >
-  <div>
-    <h1>All the posts</h1>
+<div class="max-w-3xl mx-auto">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">All the posts</h1>
   </div>
-</div>
-<div>
-  <% @posts.each do |post| %>
-    <%= render post %>
-  <% end %>
+
+  <div class="space-y-8">
+    <% @posts.each do |post| %>
+      <%= render 'post', post: post %>
+    <% end %>
+  </div>
 </div>

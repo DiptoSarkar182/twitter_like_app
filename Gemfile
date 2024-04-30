@@ -73,3 +73,4 @@ gem 'paperclip-cloudinary'
 
 gem "streamio-ffmpeg", "~> 3.0"
 gem 'faker', groups: [:development, :test]
+gem "tailwindcss-rails", "~> 2.5"

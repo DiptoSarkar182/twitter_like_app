@@ -1,8 +1,8 @@
-<%= form_with(model: post) do |form| %>
+<%= form_with(model: post, class: "space-y-6") do |form| %>
   <% if post.errors.any? %>
-    <div role="alert">
-      <h2 ><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
+    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+      <h2 class="font-bold"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul class="mt-2 list-disc pl-5 space-y-1">
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,16 +11,15 @@
   <% end %>
 
   <div>
-    <%= form.text_area :body, placeholder: "What is happening #{current_user.full_name}?!" %>
+    <%= form.text_area :body, placeholder: "What is happening #{current_user.full_name}?!", class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div>
-    <%= form.label :post_media, "Attach photo or video (Max Size 10MB):" %>
-    <%= form.file_field :post_media, accept: 'image/jpeg,image/png,video/mp4' %>
+    <%= form.label :post_media, "Attach photo or video (Max Size 10MB):", class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.file_field :post_media, accept: 'image/jpeg,image/png,video/mp4', class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Create Post", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
-
 <% end %>

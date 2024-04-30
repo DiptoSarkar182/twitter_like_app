@@ -1,6 +1,9 @@
-<div>
-  <div>
-    <h1><%= @user.full_name %>'s Profile</h1>
+<div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8">
+  <div class="mb-6">
+    <h1 class="text-3xl font-bold text-gray-800"><%= @user.full_name %>'s Profile</h1>
+    <span class="text-gray-600"><%= link_to "#{@following_count} Following", show_following_follow_path, class: "hover:text-gray-800" %></span>
+    <span class="text-gray-600 mx-2">|</span>
+    <span class="text-gray-600"><%= link_to "#{@followers_count} Followers", show_followers_follow_path, class: "hover:text-gray-800" %></span>
   </div>
   <div>
     <% @user_posts.each do |post| %>

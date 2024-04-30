@@ -1,26 +1,26 @@
-<div>
-  <%= link_to post.user.full_name, users_profile_path(post.user) %>
-</div>
-<div>
-  <%= link_to post_path(post) do %>
+<div class="bg-white rounded-lg shadow-md p-6">
+  <div class="flex items-center mb-4">
+    <%= link_to users_profile_path(post.user), class: "font-semibold text-cyan-500 hover:text-gray-600" do %>
+      <%= post.user.full_name %>
+    <% end %>
+  </div>
 
-    <div>
+  <%= link_to post_path(post), class: "block" do %>
+    <div class="text-gray-600 text-sm mb-2">
       <span title="<%= post.created_at.strftime('%B %d, %Y %I:%M %p') %>"><%= time_ago_in_words(post.created_at) %> ago</span>
     </div>
 
-    <div>
+    <div class="text-gray-800 mb-4">
       <%= post.body %>
     </div>
   <% end %>
-</div>
 
-<div>
   <% if post.post_media.attached? %>
-    <div>
+    <div class="mb-4">
       <% if post.post_media.content_type.start_with? 'image' %>
-        <%= image_tag post.post_media %>
+        <%= image_tag post.post_media, class: "w-full max-h-[500px] object-contain rounded-lg" %>
       <% elsif post.post_media.content_type.start_with? 'video' %>
-        <%= video_tag post.post_media, controls: true %>
+        <%= video_tag post.post_media, controls: true, class: "w-full max-h-[500px] rounded-lg" %>
       <% end %>
     </div>
   <% end %>
